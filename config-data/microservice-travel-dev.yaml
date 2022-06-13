@@ -9,7 +9,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8199/eureka/
   instance:
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${spring.application.name}:${random.value}
     
 security:
   oauth2:
