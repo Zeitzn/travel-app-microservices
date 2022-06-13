@@ -5,3 +5,6 @@
 
 spring:  application:    name: microservice-user  cloud:    config:      enabled: true
       uri: http://localhost:8083 #Puerto de microservice-config
+  profiles:
+    active:
+    - dev

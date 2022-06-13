@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservice-travel
+    name: microservice-eureka
   cloud:
     config:
       enabled: true

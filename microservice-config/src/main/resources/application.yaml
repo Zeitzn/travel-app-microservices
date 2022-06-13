@@ -7,14 +7,14 @@ spring:
     config:
       server:
         git:
-          default-label: config-server
+          default-label: eureka
           uri: https://github.com/Zeitzn/travel-app-microservices  
           search-paths: config-data
           repos:
             development:
               pattern:
                 - '*/dev'
-              default-label: config-server
+              default-label: eureka
               uri: https://github.com/Zeitzn/travel-app-microservices
               search-paths: config-data
   application:
