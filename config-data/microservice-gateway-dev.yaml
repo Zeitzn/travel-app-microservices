@@ -23,6 +23,7 @@ spring:
         - id: microservice-user
           uri: lb://microservice-user
           predicates:
+            - Path=/api/role
             - Path=/api/user/**
             - Path=/api/auth/**
             - Path=/api/role/**
