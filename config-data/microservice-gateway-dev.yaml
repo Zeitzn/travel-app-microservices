@@ -21,6 +21,8 @@ eureka:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - TokenRelay
       discovery:
         locator:
           enabled: true
@@ -29,6 +31,8 @@ spring:
           uri: lb://microservice-user
           predicates:
             - Path=/api/**
+          filters:
+            - RemoveRequestHeaderCookie
         - id: microservice-travel
           uri: lb://microservice-travel
           predicates:
@@ -37,3 +41,19 @@ spring:
           uri: lb://microservice-uaa
           predicates:
             - Path=/user/**
+  security:
+    oauth2:
+      cliente:
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:9090/realms/movi-realm/protocol/openid-connect/auth
+            userinfo-uri: http://localhost:9090/realms/movi-realm/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+            token-uri: http://localhost:9090/realms/movi-realm/protocol/openid-connect/token
+        registration:
+          movi-user-client:
+            provider: keycloak
+            client-id: movi-user-client
+            client-secret: AenGOEwNJaPOlBlsWewQZRIKpKcJejGK
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/movi-user-client"
