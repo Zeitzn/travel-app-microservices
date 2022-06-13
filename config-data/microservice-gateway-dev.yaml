@@ -23,17 +23,18 @@ spring:
         - id: microservice-user
           uri: lb://microservice-user
           predicates:
-            - Path=/api/role
-            - Path=/api/user/**
-            - Path=/api/auth/**
-            - Path=/api/role/**
-            - Path=/api/business/**
-            - Path=/api/business-driver/**
-            - Path=/api/business-driver-vehicle/**
-            - Path=/api/business-vehicle/**
-            - Path=/api/user-type/**
-            - Path=/api/vehicle/**
-            - Path=/api/worker/**
+            - Path=/api/**
+            #- Path=/api/role
+            #- Path=/api/user/**
+            #- Path=/api/auth/**
+            #- Path=/api/role/**
+            #- Path=/api/business/**
+            #- Path=/api/business-driver/**
+            #- Path=/api/business-driver-vehicle/**
+            #- Path=/api/business-vehicle/**
+            #- Path=/api/user-type/**
+            #- Path=/api/vehicle/**
+            #- Path=/api/worker/**
         - id: microservice-travel
           uri: lb://microservice-travel
           predicates:
