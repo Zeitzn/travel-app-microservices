@@ -43,7 +43,7 @@ spring:
             - Path=/user/**
   security:
     oauth2:
-      cliente:
+      client:
         provider:
           keycloak:
             authorization-uri: http://localhost:9090/realms/movi-realm/protocol/openid-connect/auth
