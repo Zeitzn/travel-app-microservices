@@ -11,3 +11,8 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.value}
     #instance-id: ${spring.application.name}:${server.port}
+    
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:4445/user

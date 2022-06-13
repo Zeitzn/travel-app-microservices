@@ -13,6 +13,11 @@ eureka:
   instance:
     hostname: localhost
     
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:4445/user
+    
 spring:
   cloud:
     gateway:

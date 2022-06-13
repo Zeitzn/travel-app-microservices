@@ -1,0 +1,13 @@
+#Conexion al config-service Spring Cloud Server
+spring:
+  application:
+    name: microservice-uaa
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8083
+      username: root
+      password: s3cr3t
+  profiles:
+   active:
+   - dev

@@ -7,15 +7,20 @@ spring:
     config:
       server:
         git:
-          default-label: gateway
+          default-label: security
           uri: https://github.com/Zeitzn/travel-app-microservices  
           search-paths: config-data
           repos:
             development:
               pattern:
                 - '*/dev'
-              default-label: gateway
+              default-label: security
               uri: https://github.com/Zeitzn/travel-app-microservices
               search-paths: config-data
   application:
     name: microservice-config
+    
+  security:
+   user:
+     name: root
+     password: s3cr3t
