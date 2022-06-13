@@ -32,7 +32,7 @@ spring:
           predicates:
             - Path=/api/**
           filters:
-            - RemoveRequestHeaderCookie
+            - RemoveRequestHeader=Cookie
         - id: microservice-travel
           uri: lb://microservice-travel
           predicates:
