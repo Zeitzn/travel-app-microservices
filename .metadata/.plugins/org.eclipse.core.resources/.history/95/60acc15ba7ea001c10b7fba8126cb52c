@@ -1,0 +1,60 @@
+package com.movi.user.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.movi.user.commons.CrudImpl;
+import com.movi.user.commons.IGenericDAO;
+import com.movi.user.dao.ITravelDao;
+import com.movi.user.dto.TravelActionDto;
+import com.movi.user.entity.BusinessDriver;
+import com.movi.user.entity.BusinessDriverVehicle;
+import com.movi.user.entity.Travel;
+import com.movi.user.entity.User;
+import com.movi.user.enums.MoviStatus;
+import com.movi.user.exceptions.ResourceNotFoundException;
+import com.movi.user.service.IBusinessDriverService;
+import com.movi.user.service.IBusinessDriverVehicleService;
+import com.movi.user.service.ITravelService;
+import com.movi.user.service.IUserService;
+
+@Service
+public class TravelServiceImpl extends CrudImpl<Travel, String> implements ITravelService {
+
+	@Autowired
+	private ITravelDao dao;
+
+	@Autowired
+	private IBusinessDriverVehicleService businessDriverVehicleService;
+	
+	@Autowired
+	private IUserService userService;
+	
+	@Autowired
+	private IBusinessDriverService businessDriverService;
+
+	@Override
+	protected IGenericDAO<Travel, String> dao() {
+		return dao;
+	}
+
+	@Override
+	public Travel initTravel(TravelActionDto travelActionDto) {
+		Travel travel = this.findById(travelActionDto.getTravelId());
+		BusinessDriver businessDriver = businessDriverService.findByDriverAndActiveAndEnable(travelActionDto.getDriverId(), true, true);
+		System.out.println(businessDriver);
+		BusinessDriverVehicle businessDriverVehicle = businessDriverVehicleService.findByBusinessDriverAndActiveAndEnable(businessDriver.getId(), true, true);
+		System.out.println(businessDriverVehicle);
+		if (travel == null) {
+			throw new ResourceNotFoundException("Travel", "id", travelActionDto.getTravelId());
+		}
+		if (businessDriverVehicle == null) {
+			throw new ResourceNotFoundException("BusinessDriverVehicle", "id",
+					travelActionDto.getDriverId());
+		}
+		travel.setStatus(MoviStatus.PROCESS);
+		travel.setBusinessDriverVehicle(businessDriverVehicle);
+		return dao.save(travel);
+	}
+
+}

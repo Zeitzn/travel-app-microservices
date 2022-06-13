@@ -1,0 +1,10 @@
+package com.movi.user.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.movi.user.commons.IGenericDAO;
+import com.movi.user.entity.Travel;
+
+@Repository
+public interface ITravelDao extends IGenericDAO<Travel, String> {
+}

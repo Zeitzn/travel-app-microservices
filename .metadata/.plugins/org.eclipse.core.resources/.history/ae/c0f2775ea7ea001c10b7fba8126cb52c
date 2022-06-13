@@ -1,0 +1,11 @@
+package com.movi.user.service;
+
+import com.movi.user.commons.ICrudService;
+import com.movi.user.dto.TravelActionDto;
+import com.movi.user.entity.Travel;
+
+public interface ITravelService extends ICrudService<Travel, String> {
+	
+	public Travel initTravel(TravelActionDto travelActionDto);
+	
+}
