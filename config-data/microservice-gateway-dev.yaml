@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8199/eureka/
+  instance:
+    hostname: localhost
+    
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: microservice-user
+          uri: lb://microservice-user
+          predicates:
+            - Path=/api/user/**
+            - Path=/api/auth/**
+            - Path=/api/role/**
+            - Path=/api/business/**
+            - Path=/api/business-driver/**
+            - Path=/api/business-driver-vehicle/**
+            - Path=/api/business-vehicle/**
+            - Path=/api/user-type/**
+            - Path=/api/vehicle/**
+            - Path=/api/worker/**
+        - id: microservice-travel
+          uri: lb://microservice-travel
+          predicates:
+            - Path=/api/travel/**
