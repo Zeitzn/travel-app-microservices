@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  profiles:
+    active: dev, prod
+  cloud:
+    config:
+      server:
+        git:
+          default-label: config-server
+          uri: https://github.com/Zeitzn/travel-app-microservices  
+          search-paths: config-data
+          repos:
+            development:
+              pattern:
+                - '*/dev'
+              default-label: config-server
+              uri: https://github.com/Zeitzn/travel-app-microservices
+              search-paths: config-data
+  application:
+    name: microservice-config

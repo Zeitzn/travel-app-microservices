@@ -1,0 +1,7 @@
+#spring.data.mongodb.uri=mongodb+srv://desarrollo:desarrollo@cluster0.zqabhxl.mongodb.net/db_sito_app?retryWrites=true&w=majority
+#spring.data.mongodb.host=localhost
+#spring.data.mongodb.port=27017
+#spring.data.mongodb.database=db_sito_app
+
+spring:  application:    name: microservice-user  cloud:    config:      enabled: true
+      uri: http://localhost:8083 #Puerto de microservice-config
