@@ -7,14 +7,14 @@ spring:
     config:
       server:
         git:
-          default-label: security
+          default-label: keycloak-security
           uri: https://github.com/Zeitzn/travel-app-microservices  
           search-paths: config-data
           repos:
             development:
               pattern:
                 - '*/dev'
-              default-label: security
+              default-label: keycloak-security
               uri: https://github.com/Zeitzn/travel-app-microservices
               search-paths: config-data
   application:
