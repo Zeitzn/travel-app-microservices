@@ -24,10 +24,12 @@ spring:
           uri: lb://microservice-user
           predicates:
             - Path=/api/**
+          filters:
+            - AuthFilter
         - id: microservice-travel
           uri: lb://microservice-travel
           predicates:
-            - Path=/api/travel/**
+            - Path=/api/**
         - id: microservice-uaa
           uri: lb://microservice-uaa
           predicates:
