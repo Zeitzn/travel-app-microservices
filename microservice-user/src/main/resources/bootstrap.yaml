@@ -8,3 +8,4 @@ spring:  application:    name: microservice-user  cloud:    config:      en
   profiles:
     active:
     - dev
+  data:    mongodb:      uri: mongodb+srv://desarrollo:desarrollo@cluster0.zqabhxl.mongodb.net/db_sito_app?retryWrites=true&w=majority
