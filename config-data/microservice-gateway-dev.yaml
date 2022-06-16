@@ -28,3 +28,7 @@ spring:
           uri: lb://microservice-travel
           predicates:
             - Path=/api/travel/**
+        - id: microservice-uaa
+          uri: lb://microservice-uaa
+          predicates:
+            - Path=/auth/**
