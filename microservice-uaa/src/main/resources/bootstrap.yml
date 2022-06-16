@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: microservice-uaa
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8083 #Puerto de microservice-config
+  profiles:
+    active:
+    - dev
+    
+jwt:
+  secret: 27EFFB76C97022497E25D3A5D7E823462F212A82D9EBBA35F179071568B0C335

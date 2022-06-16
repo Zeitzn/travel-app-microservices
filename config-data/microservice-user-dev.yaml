@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+  error:
+    include-message: always
+    include-binding-errors: always
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8199/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    #instance-id: ${spring.application.name}:${server.port}
