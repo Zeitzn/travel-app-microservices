@@ -7,14 +7,14 @@ spring:
     config:
       server:
         git:
-          default-label: jwt-security
+          default-label: jwt-role-security
           uri: https://github.com/Zeitzn/travel-app-microservices  
           search-paths: config-data
           repos:
             development:
               pattern:
                 - '*/dev'
-              default-label: jwt-security
+              default-label: jwt-role-security
               uri: https://github.com/Zeitzn/travel-app-microservices
               search-paths: config-data
   application:

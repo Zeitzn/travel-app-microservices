@@ -10,3 +10,17 @@ eureka:
       defaultZone: http://localhost:8199/eureka/
   instance:
     instance-id: ${spring.application.name}:${random.value}
+    
+#Paths for specific role
+#Example: This admin-paths for "admin" role
+admin-paths:
+  paths:
+    -
+      uri: "/api/role"
+      method: "GET"
+    -
+      uri: "/api/role/{1}[1-9]+[0-9]*"
+      method: "POST"
+    -
+      uri: "/api/role/{1}[1-9]+[0-9]*"
+      method: "PUT"

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movi.uaa.dto.AuthUserDto;
+import com.movi.uaa.dto.RequestDto;
+import com.movi.uaa.dto.SignUpDto;
 import com.movi.uaa.dto.TokenDto;
 import com.movi.uaa.entity.AuthUser;
 import com.movi.uaa.service.AuthUserService;
@@ -30,15 +32,15 @@ public class AuthUserController {
 	}
 	
 	@PostMapping("/validate")
-	public ResponseEntity<TokenDto> validate(@RequestParam String token){
-		TokenDto tokenDto = service.validate(token);
+	public ResponseEntity<TokenDto> validate(@RequestParam String token, @RequestBody RequestDto dto){
+		TokenDto tokenDto = service.validate(token,dto);
 		if(tokenDto== null) 
 			return ResponseEntity.badRequest().build();
 		return ResponseEntity.ok(tokenDto);
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<AuthUser> create(@RequestBody AuthUserDto dto){
+	public ResponseEntity<AuthUser> create(@RequestBody SignUpDto dto){
 		AuthUser authUser = service.save(dto);
 		if(authUser == null) 
 			return ResponseEntity.badRequest().build();

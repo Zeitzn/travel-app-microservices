@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.google.common.net.HttpHeaders;
+import com.movi.gateway.dto.RequestDto;
 import com.movi.gateway.dto.TokenDto;
 
 import reactor.core.publisher.Mono;
@@ -41,6 +42,10 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
 			return webClient.build()
 					.post()
 					.uri("http://microservice-uaa/auth/validate?token="+chunks[1])
+					.bodyValue(RequestDto.builder()
+							.uri(exchange.getRequest().getPath().toString())
+							.method(exchange.getRequest().getMethod().toString())
+							.build())
 					.retrieve()
 					.bodyToMono(TokenDto.class)
 					.map(t->{
